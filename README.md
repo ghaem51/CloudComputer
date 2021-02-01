@@ -1,31 +1,45 @@
-# CloudComputer
+# Python: Getting Started
 
-# blog_project
+A barebones Django app, which can easily be deployed to Heroku.
 
-## features:
-- sign up, login and logout as a user
-- create nested categories
-- create new posts with status 'draft' or 'publish'
-- view posts related to a specific category
-- search in posts and view results
-- view posts details and leave comment for each one (each comment must be verified in admin page to be shown)
+This application supports the [Getting Started with Python on Heroku](https://devcenter.heroku.com/articles/getting-started-with-python) article - check it out.
 
+## Running Locally
 
-## command line usage (for linux):
+Make sure you have Python 3.7 [installed locally](http://install.python-guide.org). To push to Heroku, you'll need to install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli), as well as [Postgres](https://devcenter.heroku.com/articles/heroku-postgresql#local-setup).
 
-- mkdir blog_project & cd blog_project
-- [sudo apt install git-core]
-- git clone https://github.com/NajmeHabibi/blog_project.git .
-- [sudo apt install python3-pip]
-- [sudo pip3 install virtualenv]
-- virtualenv -p python3 venv
-- source venv/bin/activate
-- pip3 install -r requirements.txt
-- python3 manage.py migrate
-- python3 manage.py createsuperuser
-- python3 manage.py runserver [or configure the IDE to run automatically with run button]
-- [open 'http://127.0.0.1:8000/' in browser to see the home page]
-- [open 'http://127.0.0.1:8000/admin' in browser and login with superuser credentials to see the admin page,
-  create a category named 'all' and then categorize each new post with this category or any subcategory of it,
-  again see the home page and ...]
+```sh
+$ git clone https://github.com/heroku/python-getting-started.git
+$ cd python-getting-started
 
+$ python3 -m venv getting-started
+$ pip install -r requirements.txt
+
+$ createdb python_getting_started
+
+$ python manage.py migrate
+$ python manage.py collectstatic
+
+$ heroku local
+```
+
+Your app should now be running on [localhost:5000](http://localhost:5000/).
+
+## Deploying to Heroku
+
+```sh
+$ heroku create
+$ git push heroku main
+
+$ heroku run python manage.py migrate
+$ heroku open
+```
+or
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+## Documentation
+
+For more information about using Python on Heroku, see these Dev Center articles:
+
+- [Python on Heroku](https://devcenter.heroku.com/categories/python)
